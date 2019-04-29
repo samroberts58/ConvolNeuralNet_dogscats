@@ -19,47 +19,47 @@ directory = os.getcwd()
 
 dog = 0
 cat = 0
-for i in os.listdir(directory):  
+for i in os.listdir(directory + '/images'):
+    print(i)
     if i[0].isupper():
         if cat > 999:
-            src = i
-            dst = '00-00000-0' + str(cat) + '.jpg'
+            src = './images/' + i
+            dst = './images/00000/' + '00-00000-0' + str(cat) + '.jpg'
             os.rename(src, dst)
             cat += 1
         elif cat > 99:
-            src = i
-            dst = '00-00000-00' + str(cat) + '.jpg'
+            src = './images/' + i
+            dst = './images/00000/' + '00-00000-00' + str(cat) + '.jpg'
             os.rename(src, dst)
             cat += 1
         elif cat > 9:
-            src = i
-            dst = '00-00000-000' + str(cat) + ".jpg"
+            src = './images/' + i
+            dst = './images/00000/' + '00-00000-000' + str(cat) + ".jpg"
             os.rename(src, dst)
             cat += 1
         else:
-            src = i
-            dst = '00-00000-0000' + str(cat) + '.jpg'
+            src = './images/' + i
+            dst = './images/00000/' + '00-00000-0000' + str(cat) + '.jpg'
             os.rename(src, dst)
             cat += 1
-    else:
+    elif i[0].islower():
         if dog > 999:
-            src = i
-            dst = '01-00000-0' + str(dog) + '.jpg'
+            src = './images/' + i
+            dst = './images/00001/' + '01-00000-0' + str(dog) + '.jpg'
             os.rename(src, dst)
             dog += 1 
         elif dog > 99:
-            src = i
-            dst = '01-00000-00' + str(dog) + '.jpg'
+            src = './images/' + i
+            dst = './images/00001/' + '01-00000-00' + str(dog) + '.jpg'
             os.rename(src, dst)
             dog += 1
         elif dog > 9:
-            src = i
-            dst = '01-00000-000' + str(dog) + ".jpg"
+            src = './images/' + i
+            dst = './images/00001/' + '01-00000-000' + str(dog) + ".jpg"
             os.rename(src, dst)
             dog += 1
         else:
-            src = i
-            dst = '01-00000-0000' + str(dog) + '.jpg'
+            src = './images/' + i
+            dst = './images/00001/' + '01-00000-0000' + str(dog) + '.jpg'
             os.rename(src, dst)
             dog += 1
-    

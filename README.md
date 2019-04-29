@@ -45,10 +45,6 @@ lenet_train_test_oxford_var1.prototxt
 lenet_solver_oxford_var2.prototxt
 lenet_train_test_oxford_var2.prototxt
 ---
-Get_oxford.sh
-Create_oxford.sh
-mean.binaryproto
-
 ```
 
 ### Process Flow:

@@ -1,13 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Apr 24 21:04:06 2019
-
-@author: samro
-"""
+# This code randomly selects 70/30 of the files and places them in train/validation
 
 import os
 from random import sample
 import pandas as pd
+from shutil import copyfile
 
 # Get working directory - 00000 folder
 directory = os.getcwd() 
@@ -15,54 +11,36 @@ directory = os.getcwd()
 # Within working directory, select random sample
 train = []
 
-listdir = pd.Series(os.listdir(directory))
+catlist = pd.Series(os.listdir((directory+'/images/00000')))
 
-n = int(round((len(listdir)*.7),0))
+n = int(round((len(catlist)*.7),0))
 
-train = listdir.sample(n=n, random_state=0)
-listdir.drop(train.index, inplace=True)
+train = catlist.sample(n=n, random_state=0)
+catlist.drop(train.index, inplace=True)
 # print(listdir)
 
 # Move to train and validation folders
 for i in train:
-    os.rename("C:\\Users\\samro\\Desktop\\GW\\Mach Learn 2\\Deep-Learning\\Caffe_\\FinalProject\\00000" + "\\"+ i, "C:\\Users\\samro\\Desktop\\GW\\Mach Learn 2\\Deep-Learning\\Caffe_\\FinalProject\\train\\00000"+"\\"+i)
+    copyfile("images/00000/" + i, "train/00000/" + i)
 
-for i in listdir:
-    os.rename("C:\\Users\\samro\\Desktop\\GW\\Mach Learn 2\\Deep-Learning\\Caffe_\\FinalProject\\00000\\"+ "\\"+ i, "C:\\Users\\samro\\Desktop\\GW\\Mach Learn 2\\Deep-Learning\\Caffe_\\FinalProject\\validation\\00000\\"+ "\\"+ i)
+for i in catlist:
+    copyfile("images/00000/"+ i, "validation/00000/"+ i)
     
-
-
-# Repeat for dogs - change working directory to 00001 folder
-directory = os.getcwd() 
 
 # Within working directory, select random sample
 train = []
 
-listdir = pd.Series(os.listdir(directory))
+doglist = pd.Series(os.listdir((directory+'/images/00001')))
 
-n = int(round((len(listdir)*.7),0))
+n = int(round((len(doglist)*.7),0))
 
-train = listdir.sample(n=n, random_state=0)
-listdir.drop(train.index, inplace=True)
+train = doglist.sample(n=n, random_state=0)
+doglist.drop(train.index, inplace=True)
 # print(listdir)
 
 # Move to train and validation folders
 for i in train:
-    os.rename("C:\\Users\\samro\\Desktop\\GW\\Mach Learn 2\\Deep-Learning\\Caffe_\\FinalProject\\00001" + "\\"+ i, "C:\\Users\\samro\\Desktop\\GW\\Mach Learn 2\\Deep-Learning\\Caffe_\\FinalProject\\train\\00001"+"\\"+i)
+    copyfile("images/00001/" + i, "train/00001/" + i)
 
-for i in listdir:
-    os.rename("C:\\Users\\samro\\Desktop\\GW\\Mach Learn 2\\Deep-Learning\\Caffe_\\FinalProject\\00001\\"+ "\\"+ i, "C:\\Users\\samro\\Desktop\\GW\\Mach Learn 2\\Deep-Learning\\Caffe_\\FinalProject\\validation\\00001\\"+ "\\"+ i)
-    
-
-TXT_DIR = directory
-with open('{}/train.txt'.format(TXT_DIR), 'w') as f:
-    for image in '00000':
-        f.write('{} 0\n'.format(image))
-    for image in '00001':
-        f.write('{} 1\n'.format(image))
- 
-with open('{}/text.txt'.format(TXT_DIR), 'w') as f:
-    for image in '00000':
-        f.write('{} 0\n'.format(image))
-    for image in '00000':
-        f.write('{} 1\n'.format(image))
+for i in doglist:
+    copyfile("images/00001/"+ i, "validation/00001/" + i)

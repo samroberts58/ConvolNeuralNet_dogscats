@@ -31,6 +31,7 @@ README.md
 ---
 train_oxford.py
 train_oxford_var1.py
+train_oxford_var2.py
 create_lmdb.py
 renameFiles.py
 traintestsplit.py
@@ -41,11 +42,12 @@ lenet_solver_oxford.prototxt
 lenet_train_test_oxford.prototxt
 lenet_solver_oxford_var1.prototxt
 lenet_train_test_oxford_var1.prototxt
+lenet_solver_oxford_var2.prototxt
+lenet_train_test_oxford_var2.prototxt
 ---
 Get_oxford.sh
 Create_oxford.sh
----
-Images.tar.gz
+mean.binaryproto
 
 ```
 
@@ -69,9 +71,11 @@ Steps for running the project code:
     - Run train_oxford.py
         - 1st Run: Ensure line 31 uses 'lenet_solver_oxford.prototxt'
     - Run train_oxford_var1.py
-        - Ensure line 31 uses 'lenet_solver_oxford_var1.prototxt'
+        - 2nd Run: Ensure line 31 uses 'lenet_solver_oxford_var1.prototxt'
+    - Run train_oxford_var2.py
+         - 3rd Run: Ensure line 31 uses 'lenet_solver_oxford_var2.prototxt'
     - Run train_oxford.py
-        - 2nd Run: Update line 31 to use 'alexnet_solver_oxford.prototxt'
+        - 4th Run: Update line 31 to use 'alexnet_solver_oxford.prototxt'
 
 
 
@@ -80,7 +84,7 @@ Steps for running the project code:
 Metric measurements included: 
     - Accuracy Score
     - Loss value
-    - Train/Test time
+    - Learning Rate
 
 Overfitting mitigation strategies:
     - Dropout Layers
@@ -93,11 +97,13 @@ A preliminary LeNet model was ran to establish a baseline for further comparison
 
 The next model was a LeNet model with updated functions and parameters. It reduced the batch size, increased the number of layers, added dropout layers, and changed the loss function.
 
+A second LeNet modified model was included with fewer layers, no dropout layers, and the updated parameters from the first LeNet variation.
+
 The last model was an AlexNet model using the same format and parameters as the LeNet baseline. This model includes 5 convolutional/pooling layers with dropout layers and three fully connected layers.
 
 ## Summary
 
-The ideal model was #### with an accuracy score of ##% and a final loss value of ####. It trained in ## seconds and tested in ## seconds. 
+The ideal model was LeNet version 2 with an accuracy score of up to 100%, a final loss value of 0.105658, and a learning rate of 0.000919131.
 
 One recomendation for future research would be to study the hidden layers' feature maps and attempt to classify images based on subspecies.
 

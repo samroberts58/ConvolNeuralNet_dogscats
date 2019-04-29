@@ -9,7 +9,8 @@ Final Project - Group 5
 1. Go to the following URL and retrieve the images.tar.gz then place in your working directory: 
 https://www.kaggle.com/zippyz/cats-and-dogs-breeds-classification-oxford-dataset#images.tar.gz
 
-2. Unzip images.tar.gz in your working directory and an images folder will appear with the jpgs.
+2. Unzip images.tar.gz in your working directory and an images folder will appear with the jpgs.  Remove the
+   .mat files (there are 3) from the folder.
 
 3. Make two directories inside the images folder: '00000' and '00001' These will act as class labels.
 
@@ -24,7 +25,8 @@ https://www.kaggle.com/zippyz/cats-and-dogs-breeds-classification-oxford-dataset
 ## Create the lmdb databases from the image files and the mean image
 
 7. Run create_lmdb.py from your working directory.  This will create an oxford_train_lmdb and an oxford_test_lmdb that will be used as
-    inputs to the Caffe files.
+    inputs to the Caffe files.  There may or may not be an issue where the lmdb script crashes on specific files.  There are only
+    a few so delete or move them as they come up (just print img_path if it crashes and it'll tell you the file name).
 
 8. Locate the caffe installation directory and run the following command in your working directory to create the image mean file:
 $CAFFE_INSTALLATION/build/tools/compute_image_mean -backend=lmdb oxford_train_lmdb mean.binaryproto
